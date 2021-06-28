@@ -23,8 +23,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <div class="w3-top">
   <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
     <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-    <div class="w3-right w3-padding-16">Mail</div>
-    <div class="w3-center w3-padding-16">My Food</div>
+    
+    @if (Route::has('login'))
+        <div class="w3-right w3-padding-16 hidden fixed px-6 py-4 sm:block margin-left:5px;">
+            @auth
+                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+            @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
+
+    <div class="w3-right w3-padding-16" style="margin-right:10px;">Cesta</div>
+    <div class="w3-center w3-padding-16">Restaurante X</div>
   </div>
 </div>
   
