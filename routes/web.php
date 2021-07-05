@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view("welcome"); });
+// Route::get('/', function () { return view("welcome"); });
 
+// Pagina principal:
 Route::get('supermercado-x', 'App\Http\Controllers\Home\HomeController@index');
+// Pagina principal.
 
+// Users and Admin:
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Users and Admin.
+
+// templates:
+Route::resource('templates/categorias', App\Http\Controllers\Templates\CategoryController::class);
+// templates.
